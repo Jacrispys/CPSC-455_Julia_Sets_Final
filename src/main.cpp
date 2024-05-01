@@ -1,10 +1,17 @@
 #include <SFML/Graphics.hpp>
+#include <thread>
+#include "Render.hpp"
 
 int main()
 {
-    auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
+    sf::RenderWindow window(sf::VideoMode(1980u, 1080u), "OpenGL");
     window.setFramerateLimit(144);
+    window.setActive(false);
 
+    Render render = Render();
+    std::thread renderThread = render.startRenderThread(window);
+
+    // event logic
     while (window.isOpen())
     {
         for (auto event = sf::Event{}; window.pollEvent(event);)
@@ -15,7 +22,7 @@ int main()
             }
         }
 
-        window.clear();
-        window.display();
     }
+    renderThread.join();
+    return 0;
 }
