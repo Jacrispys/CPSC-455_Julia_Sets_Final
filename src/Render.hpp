@@ -7,6 +7,7 @@
 
 
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Graphics/VertexArray.hpp"
 
 class Render {
 
@@ -18,6 +19,7 @@ public:
 private:
     void renderWindow(sf::RenderWindow *window);
 
+    sf::VertexArray generateVertexArray(sf::Vector2u window_size);
 };
 
 

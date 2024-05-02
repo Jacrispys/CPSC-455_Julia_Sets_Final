@@ -12,7 +12,9 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(455_Final_Julia_Sets src/main.cpp
         src/Render.cpp
-        src/Render.hpp)
+        src/Render.hpp
+        src/utils/JuliaSet.cpp
+        src/utils/JuliaSet.hpp)
 target_link_libraries(455_Final_Julia_Sets PRIVATE sfml-graphics)
 target_compile_features(455_Final_Julia_Sets PRIVATE cxx_std_17)
 
