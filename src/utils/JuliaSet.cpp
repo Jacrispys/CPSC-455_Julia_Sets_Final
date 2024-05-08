@@ -54,7 +54,7 @@ float JuliaSet::smooth_iterate(sf::Vector2f zi) {
         ++curr_iter;
     }
     const float final_mod = std::sqrt(mod);
-    const float smooth_iters = float(curr_iter) - std::log2(std::max(1.0f, std::log2(mod)));
+    const float smooth_iters = float(curr_iter) - std::log2(std::max(1.0f, std::log2(final_mod)));
     return smooth_iters;
 }
 
