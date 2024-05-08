@@ -15,6 +15,7 @@ class Render {
 public:
     Render() {
         mt = std::mt19937(1);
+        curr_julia = {-0.34f, 0.62f};
     }
 
     std::thread startRenderThread(sf::RenderWindow &window);
@@ -22,6 +23,8 @@ public:
     void captureWindow();
 
 private:
+
+    sf::Vector2f curr_julia;
 
     void renderWindow(sf::RenderWindow *window);
 
