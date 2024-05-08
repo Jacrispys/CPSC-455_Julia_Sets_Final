@@ -51,7 +51,7 @@ void Render::renderWindow(sf::RenderWindow *window) {
             texture.create(window->getSize().x, window->getSize().y);
             texture.update(*window);
             sf::Image img = texture.copyToImage();
-            bool b = img.saveToFile("../../src/resources/capture.png");
+            bool b = img.saveToFile("../../src/resources/capture" + x + "_" + y + ".png");
             std::string eval = b ? "Saved." : "Failed.";
             std::cout << eval << std::endl;
         }
@@ -66,7 +66,6 @@ void Render::renderWindow(sf::RenderWindow *window) {
 }
 
 sf::Image Render::generateVertexArray(sf::Vector2u window_size) {
-    const int MAX_ITERATIONS = 500;
     std::array<sf::Vector2f, 32> anti_aliasing_offsets;
     for (auto &o: anti_aliasing_offsets) {
         o.x = RNG(1.0f);
@@ -82,7 +81,7 @@ sf::Image Render::generateVertexArray(sf::Vector2u window_size) {
     sf::Image image;
     image.create(window_size.x, window_size.y);
 
-    int thread_count = 16;
+    int thread_count = 24;
     int slice_height = window_size.y / thread_count;
     std::vector<std::thread> thread_pool;
     for (int k{0}; k < thread_count; k++) {

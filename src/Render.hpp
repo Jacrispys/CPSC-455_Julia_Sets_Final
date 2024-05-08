@@ -16,7 +16,8 @@ class Render {
 public:
     Render() {
         mt = std::mt19937(1);
-        curr_julia = {-0.71f, 0.25f};
+        curr_julia = {-1.0f, 0.0f};
+        MAX_ITERATIONS = 10000;
     }
 
     std::thread startRenderThread(sf::RenderWindow &window);
@@ -26,6 +27,7 @@ public:
 private:
 
     sf::Vector2f curr_julia;
+    int MAX_ITERATIONS;
 
     void renderWindow(sf::RenderWindow *window);
 
