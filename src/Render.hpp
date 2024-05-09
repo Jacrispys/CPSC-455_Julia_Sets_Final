@@ -16,8 +16,8 @@ class Render {
 public:
     Render() {
         mt = std::mt19937(1);
-        curr_julia = {-1.0f, 0.0f};
-        MAX_ITERATIONS = 10000;
+        curr_julia = {0.28f, 0.008f};
+        MAX_ITERATIONS = 500;
     }
 
     std::thread startRenderThread(sf::RenderWindow &window);

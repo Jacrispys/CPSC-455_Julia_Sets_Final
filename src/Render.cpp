@@ -85,7 +85,8 @@ sf::Image Render::generateVertexArray(sf::Vector2u window_size) {
     int slice_height = window_size.y / thread_count;
     std::vector<std::thread> thread_pool;
     for (int k{0}; k < thread_count; k++) {
-        thread_pool.emplace_back(&Render::computeSlice, this, window_size, k, slice_height, anti_aliasing_offsets, MAX_ITERATIONS, std::ref(js), std::ref(image));
+        thread_pool.emplace_back(&Render::computeSlice, this, window_size, k, slice_height, anti_aliasing_offsets,
+                                 MAX_ITERATIONS, std::ref(js), std::ref(image));
     }
     for (std::thread &t: thread_pool) {
         t.join();
@@ -131,7 +132,6 @@ std::thread Render::startRenderThread(sf::RenderWindow &window) {
     std::thread thread(&Render::renderWindow, this, &window);
     return thread;
 }
-
 
 
 
